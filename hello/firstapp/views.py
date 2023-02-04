@@ -4,7 +4,13 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h2>Главная</h2>")
+    #return render(request, "firstapp/home.html")
+    header = "Персональные данные"                      # обычная переменная
+    langs = ["Английский", "Немецкий", "Испанский"]     # массив
+    user = {"name": "Максим", "age": 30}                # словарь
+    addr = ("Виноградная", 23, 45)                      # кортеж
+    data = {"header": header, "langs": langs, "user": user, "address": addr}
+    return render(request, "index.html", context=data)
 
 def about(request):
     return HttpResponse("<h2>О сайте</h2>")
